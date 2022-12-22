@@ -1,0 +1,240 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/js/bootstrap.js">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Aibonitta</title>
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-lg bg-transparent container pt-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Aibonitta</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/galery">Галерея</a>
+                        </li>
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="/contacts">Контакты</a>#}
+{#                        </li>#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href="#">О сайте</a>#}
+{#                        </li>#}
+                        <li class="nav-item">
+
+                        </li>
+                    </ul>
+
+                </div>
+                <div class=''>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Записаться</button>
+                </div>
+            </div>
+        </nav>
+        <div class="container txt-logo">
+            <h1 class="text-center">AIBONITTA TATTOO</h1>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Запись на сеанс</h5>
+
+                </div>
+                <div class="modal-body">
+                    Вы можете записаться написав в одну из социальных сетей или мессенджер, или оставить заявку.
+
+                    <form>
+                        <div class="mb-3 mt-5">
+                            <label for="exampleInputEmail1" class="form-label">Сылка на социальную сеть или мессенджер</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                            <div id="emailHelp" class="form-text">аккаунт должен быть открыт</div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-success">Отправить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-3 gallery bg-dark">
+        <div class="container">
+            <h1 class="text-center border-bottom gallery-txt pb-3">Галерея</h1>
+            <div class="row pt-3 gy-3">
+                {% for img in gallery_img %}
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="/media/{{ img.image }}" data-fancybox="gallery">
+                            <img src="/media/{{ img.image }}" alt="{{ img.name }}" class="gallery-img">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="series">
+        <div class="container pb-4">
+            <div class="row">
+                <div class="col-12 service-txt mt-3 border-bottom">
+                    <h1>Услуги</h1>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-6"><img src="/static/img/icons8-дракон-50.png" alt="" class="service-img"></div>
+                <div class="col-6"><img src="/static/img/icons8-тату-машина-50.png" alt="" class="service-img"></div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="service-txt">Зарисовка эскиза</h2>
+                </div>
+                <div class="col-6">
+                    <h2 class="service-txt">Забив</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="p-3 gallery bg-dark">
+        <div class="container">
+            <h1 class="text-center border-bottom gallery-txt pb-3">Свободные эскизы</h1>
+            <div class="row pt-3 gy-3">
+                {% for img in scetch_img %}
+                    <div class="col-lg-3 col-sm-6">
+                        <a href="media/{{ img.image }}" data-fancybox="gallery">
+                            <img src="media/{{ img.image }}" alt="{{ img.name }}" class="gallery-img">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="description-master pt-3">
+        <div class="container pb-5">
+            <h1 class="text-center border-bottom pb-3">О мастере</h1>
+            <div class="row gy-3">
+                <div class="col-lg-4">
+                    <img src="/static/img/bonnie-r.jpg" alt="" class="description-master-img">
+                </div>
+                <div class="col-lg-4">
+                    <p>
+                        Доброго времени суток, давай знакомиться.
+                        Я мастер художественной татуировки
+                        Меня зовут Анастасия-Бонита двойное имя.
+                        С лет 17 загорелась татуировками, так же сама почти вся в них
+                        Очень люблю, когда вы делитесь со мной интересными, идеями и мы их вместе воплощаем
+                        Я обожаю хороший кофе и буду рада встретиться с тобой в нашей студии за чашечкой кофе, обсудить
+                        твои идеи.
+                    </p>
+                </div>
+                <div class="col-lg-4">
+                    <img src="/static/img/bonnie-l.jpg" alt="" class="description-master-img">
+                </div>
+            </div>
+
+            <!-- ABOUT -->
+            <div>
+                <div class="container mt-4 gy-3">
+                    <div class="row text-center">
+                        <div class="col"><a href=""><img src="/static/img/telegram.png" alt="" class="link"></a></div>
+                        <div class="col"><a href=""><img src="/static/img/instagram.png" alt="" class="link"></a></div>
+                        <div class="col-sm-4"><a href=""><img src="/static/img/vk.png" alt="" class="link"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="maps bg-dark pb-4">
+        <div class="container">
+            <div>
+                <h1 class="text-center border-bottom gallery-txt pb-3 pt-5">Где мы находимся</h1>
+            </div>
+            <iframe id="map_96514135" frameborder="0" width="100%" height="600px"
+                sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+            
+             <script>type="text/javascript">(function (e, t) { var r = document.getElementById(e); r.contentWindow.document.open(), r.contentWindow.document.write(atob(t)), r.contentWindow.document.close() })("map_96514135", "PGJvZHk+PHN0eWxlPgogICAgICAgIGh0bWwsIGJvZHkgewogICAgICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgICAgIGh0bWwsIGJvZHksICNtYXAgewogICAgICAgICAgICB3aWR0aDogMTAwJTsKICAgICAgICAgICAgaGVpZ2h0OiAxMDAlOwogICAgICAgIH0KICAgICAgICAuYnVsbGV0LW1hcmtlciB7CiAgICAgICAgICAgIHdpZHRoOiAyMHB4OwogICAgICAgICAgICBoZWlnaHQ6IDIwcHg7CiAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7CiAgICAgICAgICAgIGJveC1zaGFkb3c6IDAgMXB4IDNweCAwIHJnYmEoMCwgMCwgMCwgMC4yKTsKICAgICAgICAgICAgYm9yZGVyOiA0cHggc29saWQgIzAyODFmMjsKICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlOwogICAgICAgIH0KICAgICAgICAucGVybWFuZW50LXRvb2x0aXAgewogICAgICAgICAgICBiYWNrZ3JvdW5kOiBub25lOwogICAgICAgICAgICBib3gtc2hhZG93OiBub25lOwogICAgICAgICAgICBib3JkZXI6IG5vbmU7CiAgICAgICAgICAgIHBhZGRpbmc6IDZweCAxMnB4OwogICAgICAgICAgICBjb2xvcjogIzI2MjYyNjsKICAgICAgICB9CiAgICAgICAgLnBlcm1hbmVudC10b29sdGlwOmJlZm9yZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IG5vbmU7CiAgICAgICAgfQogICAgICAgIC5kZy1wb3B1cF9oaWRkZW5fdHJ1ZSB7CiAgICAgICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIH0KICAgICAgICAubGVhZmxldC1jb250YWluZXIgLmxlYWZsZXQtcG9wdXAgLmxlYWZsZXQtcG9wdXAtY2xvc2UtYnV0dG9uIHsKICAgICAgICAgICAgdG9wOiAwOwogICAgICAgICAgICByaWdodDogMDsKICAgICAgICAgICAgd2lkdGg6IDIwcHg7CiAgICAgICAgICAgIGhlaWdodDogMjBweDsKICAgICAgICAgICAgZm9udC1zaXplOiAyMHB4OwogICAgICAgICAgICBsaW5lLWhlaWdodDogMTsKICAgICAgICB9CiAgICA8L3N0eWxlPjxkaXYgaWQ9Im1hcCI+PC9kaXY+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly9tYXBzLmFwaS4yZ2lzLnJ1LzIuMC9sb2FkZXIuanM/cGtnPWZ1bGwmYW1wO3NraW49bGlnaHQiPjwvc2NyaXB0PjxzY3JpcHQ+KGZ1bmN0aW9uKGUpe3ZhciB0PUpTT04ucGFyc2UoZSkscj10Lm9yZGVyZWRHZW9tZXRyaWVzLG49dC5tYXBQb3NpdGlvbixhPXQuaXNXaGVlbFpvb21FbmFibGVkO2Z1bmN0aW9uIG8oZSl7cmV0dXJuIGRlY29kZVVSSUNvbXBvbmVudChhdG9iKGUpLnNwbGl0KCIiKS5tYXAoZnVuY3Rpb24oZSl7cmV0dXJuIiUiKygiMDAiK2UuY2hhckNvZGVBdCgwKS50b1N0cmluZygxNikpLnNsaWNlKC0yKX0pLmpvaW4oIiIpKX1ERy50aGVuKGZ1bmN0aW9uKCl7dmFyIGU9REcubWFwKCJtYXAiLHtjZW50ZXI6W24ubGF0LG4ubG9uXSx6b29tOm4uem9vbSxzY3JvbGxXaGVlbFpvb206YSx6b29tQ29udHJvbDohYX0pO0RHLmdlb0pTT04ocix7c3R5bGU6ZnVuY3Rpb24oZSl7dmFyIHQscixuLGEsbztyZXR1cm57ZmlsbENvbG9yOm51bGw9PT0odD1lKXx8dm9pZCAwPT09dD92b2lkIDA6dC5wcm9wZXJ0aWVzLmZpbGxDb2xvcixmaWxsT3BhY2l0eTpudWxsPT09KHI9ZSl8fHZvaWQgMD09PXI/dm9pZCAwOnIucHJvcGVydGllcy5maWxsT3BhY2l0eSxjb2xvcjpudWxsPT09KG49ZSl8fHZvaWQgMD09PW4/dm9pZCAwOm4ucHJvcGVydGllcy5zdHJva2VDb2xvcix3ZWlnaHQ6bnVsbD09PShhPWUpfHx2b2lkIDA9PT1hP3ZvaWQgMDphLnByb3BlcnRpZXMuc3Ryb2tlV2lkdGgsb3BhY2l0eTpudWxsPT09KG89ZSl8fHZvaWQgMD09PW8/dm9pZCAwOm8ucHJvcGVydGllcy5zdHJva2VPcGFjaXR5fX0scG9pbnRUb0xheWVyOmZ1bmN0aW9uKGUsdCl7cmV0dXJuInJhZGl1cyJpbiBlLnByb3BlcnRpZXM/REcuY2lyY2xlKHQsZS5wcm9wZXJ0aWVzLnJhZGl1cyk6REcubWFya2VyKHQse2ljb246ZnVuY3Rpb24oZSl7cmV0dXJuIERHLmRpdkljb24oe2h0bWw6IjxkaXYgY2xhc3M9J2J1bGxldC1tYXJrZXInIHN0eWxlPSdib3JkZXItY29sb3I6ICIrZSsiOyc+PC9kaXY+IixjbGFzc05hbWU6Im92ZXJyaWRlLWRlZmF1bHQiLGljb25TaXplOlsyMCwyMF0saWNvbkFuY2hvcjpbMTAsMTBdfSl9KGUucHJvcGVydGllcy5jb2xvcil9KX0sb25FYWNoRmVhdHVyZTpmdW5jdGlvbihlLHQpe2UucHJvcGVydGllcy5kZXNjcmlwdGlvbiYmdC5iaW5kUG9wdXAobyhlLnByb3BlcnRpZXMuZGVzY3JpcHRpb24pLHtjbG9zZUJ1dHRvbjohMCxjbG9zZU9uRXNjYXBlS2V5OiEwfSksZS5wcm9wZXJ0aWVzLnRpdGxlJiZ0LmJpbmRUb29sdGlwKG8oZS5wcm9wZXJ0aWVzLnRpdGxlKSx7cGVybWFuZW50OiEwLG9wYWNpdHk6MSxjbGFzc05hbWU6InBlcm1hbmVudC10b29sdGlwIn0pfX0pLmFkZFRvKGUpfSl9KSgneyJvcmRlcmVkR2VvbWV0cmllcyI6W3sidHlwZSI6IkZlYXR1cmUiLCJwcm9wZXJ0aWVzIjp7InRpdGxlIjoiMEo3UXZOQzEwWURSZ3RDdyIsImRlc2NyaXB0aW9uIjoiIiwiY29sb3IiOiIjZmYwMDAwIiwiekluZGV4IjoxMDAwMDAwMDAwfSwiZ2VvbWV0cnkiOnsidHlwZSI6IlBvaW50IiwiY29vcmRpbmF0ZXMiOlszNC4zNzM5NzgsNjEuNzkzMTRdfSwiaWQiOjEzMjB9XSwibWFwUG9zaXRpb24iOnsibGF0Ijo2MS43OTI5NjIyNjM0NTcyODQsImxvbiI6MzQuMzc0NjQ4OTI4NjQyMjgsInpvb20iOjE4fSwiaXNXaGVlbFpvb21FbmFibGVkIjp0cnVlfScpPC9zY3JpcHQ+PHNjcmlwdCBhc3luYz0iIiB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cHM6Ly93d3cuZ29vZ2xldGFnbWFuYWdlci5jb20vZ3RhZy9qcz9pZD1VQS0xNTg4NjYxNjgtMSI+PC9zY3JpcHQ+PHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPihmdW5jdGlvbihlKXtmdW5jdGlvbiB0KCl7ZGF0YUxheWVyLnB1c2goYXJndW1lbnRzKX13aW5kb3cuZGF0YUxheWVyPXdpbmRvdy5kYXRhTGF5ZXJ8fFtdLHQoImpzIixuZXcgRGF0ZSksdCgiY29uZmlnIixlKSx3aW5kb3cuZ3RhZz10fSkoJ1VBLTE1ODg2NjE2OC0xJyk8L3NjcmlwdD48L2JvZHk+") </script>
+            
+            <div>
+                <ul>
+                    <li>Петрозаводск, проспект Ленина 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="about mt-5 mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-10">
+                    <h3>Тату мастер</h3>
+                    <ul>
+                        <li>Анастасия Бонитта</li>
+                        <li>Рабочий телефон: +79004636621</li>
+                        <li>Telegram: @xxxxxxx</li>
+                        <li>Рабочий инстаграм: @Aibonitta</li>
+                        <li>Группа ВК: </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h3>Заказать сайт</h3>
+                    <ul>
+                        <li>
+                            Telegram: @datamainer
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            caption: function (fancybox, carousel, slide) {
+                return (
+                    `${slide.index + 1} / ${carousel.slides.length} <br />` + slide.caption
+                );
+            },
+        });
+    </script>
+</body>
+
+</html>
