@@ -4,7 +4,13 @@ body {
 
 
 .main {
-    height: 100vh;
+    height: 90vh;
+}
+
+.logo {
+    width: 100%;
+    position: relative;
+    top: 40%;
 }
 
 a {
@@ -33,15 +39,21 @@ a:hover {
     color: aliceblue;
 }
 
-.txt-logo {
+.txt-container {
     color: white;
-    height: 60vh;
-    margin-top: 15%;
+    height: 90%;
 }
 
+
+
 .gallery-img {
-    max-width: 200px;
-    max-height: 300px;
+    max-width: 100%;
+}
+
+.scetch-img {
+    height: 100%;
+    width: 100%;
+
 }
 
 .gallery-txt {
@@ -75,7 +87,8 @@ a:hover {
 
 
 .service-img {
-    padding-left: 47%;
+    position: relative;
+    left: 40%;
 }
 
 .service-txt {
