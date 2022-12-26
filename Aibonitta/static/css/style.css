@@ -9,7 +9,6 @@ body {
 
 a {
     color: white;
-    /* text-decoration: none; */
 }
 
 a:hover {
@@ -41,8 +40,8 @@ a:hover {
 }
 
 .gallery-img {
-    width: 100%;
-    /* border-radius: 15px; */
+    max-width: 200px;
+    max-height: 300px;
 }
 
 .gallery-txt {
